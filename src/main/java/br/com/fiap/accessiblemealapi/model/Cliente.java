@@ -23,7 +23,6 @@ public class Cliente {
     @NotBlank(message = "Campo obrigatório")
     private String cpf;
 
-    @NotBlank(message = "Campo obrigatório")
     private boolean isPCD;
 
     private String typePCD;
@@ -39,24 +38,24 @@ public class Cliente {
     }
 
     //Caso possuir deficiencia
-    public Cliente(String name, String email, String cpf, String password, boolean isPCD, String typePCD, String address) {
+    public Cliente(String name, String email, String cpf, String address, boolean isPCD, String typePCD, String password) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
+        this.address = address;
         this.isPCD = isPCD;
         this.typePCD = typePCD;
         this.password = password;
-        this.address = address;
     }
 
     //Caso nao possuir deficiencia
-    public Cliente(String name, String email, String cpf, String password, boolean isPCD, String address) {
+    public Cliente(String name, String email, String cpf, String address, boolean isPCD, String password) {
         this.name = name;
         this.email = email;
         this.cpf = cpf;
+        this.address = address;
         this.isPCD = isPCD;
         this.password = password;
-        this.address = address;
     }
 
     public Long getId() {
@@ -127,7 +126,7 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente [cpf=" + cpf + ", email=" + email + ", endereco="
-                + address + ", id=" + id + ", nome=" + name + ", senha=" + password + ", pcd=" + isPCD + ", tipoPCD=" + typePCD + "]";
+                + address + ", id=" + id + ", nome=" + name + ", password=" + password + ", pcd=" + isPCD + ", tipoPCD=" + typePCD + "]";
     }
     
 }

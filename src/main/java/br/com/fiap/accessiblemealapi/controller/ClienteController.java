@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,8 @@ import br.com.fiap.accessiblemealapi.model.Cliente;
 import br.com.fiap.accessiblemealapi.service.ClienteService;
 
 @RestController
-@RequestMapping("/api/cliente")
+@RequestMapping("/api/cliente/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ClienteController {
 
     @Autowired
@@ -54,10 +56,10 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         
         var cliente = optional.get();
-        var senha = cliente.getPassword();
+        var password = cliente.getPassword();
         BeanUtils.copyProperties(newCliente, cliente);
         cliente.setId(id);
-        cliente.setPassword(senha);
+        cliente.setPassword(password);
         service.save(cliente);
         return ResponseEntity.ok(cliente);
     }    

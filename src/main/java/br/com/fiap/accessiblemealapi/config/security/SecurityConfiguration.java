@@ -2,13 +2,11 @@ package br.com.fiap.accessiblemealapi.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,31 +28,26 @@ public class SecurityConfiguration {
             .authorizeHttpRequests()
                 .antMatchers(HttpMethod.GET, "/api/cliente/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/cliente").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/cliente/").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/cliente/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/restaurante/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/restaurante").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/restaurante/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/api/restaurante/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/cliente/login**").permitAll()
-            .and()
-                .csrf().disable()
-                .headers().frameOptions().disable()
-            .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)                 
-            .and()
-                .cors()                 
-            .and()
-                .csrf().disable();
+                .antMatchers(HttpMethod.GET, "/api/cliente/login/**").permitAll()
+                .anyRequest().authenticated()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().cors()
+                .and().csrf().disable();
         return http.build();
         
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    //@Bean
+    //public PasswordEncoder passwordEncoder() {
+    //    return new BCryptPasswordEncoder();
+    //}
    
     
 }

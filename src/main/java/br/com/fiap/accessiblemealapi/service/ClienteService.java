@@ -29,12 +29,12 @@ public class ClienteService {
         return repository.findById(id);
     }
     
-    public Optional<Cliente> findByEmailAndSenha(String email, String password) {
-        return repository.findByEmailAndSenha(email, password);
+    public Optional<Cliente> findByEmailAndPassword(String email, String password) {
+        return repository.findByEmailAndPassword(email, password);
     }
 
     public Map<String, Object> login(String email, String password) {
-        Cliente cliente = repository.findByEmailAndSenha(email, password).orElseThrow(() -> new RuntimeException() );
+        Cliente cliente = repository.findByEmailAndPassword(email, password).orElseThrow(() -> new RuntimeException() );
         Map<String, Object> response = new HashMap<>();
 
         response.put("id", cliente.getId());

@@ -30,8 +30,8 @@ public class RestauranteService {
         return repository.findById(id);
     }
 
-    public List<Restaurante> findByAcessibilidade(String acessibilidade) {
-        return repository.findByAcessibilidade(acessibilidade);
+    public List<Restaurante> findByTypePCD(String typePCD) {
+        return repository.findByTypePCD(typePCD);
     }
 
     public void deleteById(Long id) {
