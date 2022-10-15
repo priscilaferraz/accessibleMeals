@@ -54,10 +54,10 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         
         var cliente = optional.get();
-        var senha = cliente.getSenha();
+        var senha = cliente.getPassword();
         BeanUtils.copyProperties(newCliente, cliente);
         cliente.setId(id);
-        cliente.setSenha(senha);
+        cliente.setPassword(senha);
         service.save(cliente);
         return ResponseEntity.ok(cliente);
     }    

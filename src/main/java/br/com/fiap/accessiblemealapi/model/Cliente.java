@@ -15,29 +15,48 @@ public class Cliente {
     private Long id;
 
     @NotBlank(message = "Campo obrigatório")
-    private String nome;
-
-    @NotBlank(message = "Campo obrigatório")
-    private String cpf;
+    private String name;
 
     @NotBlank(message = "Campo obrigatório")
     private String email;
 
     @NotBlank(message = "Campo obrigatório")
-    private String senha;
+    private String cpf;
 
     @NotBlank(message = "Campo obrigatório")
-    private String endereco;
+    private boolean isPCD;
+
+    private String typePCD;
+
+    @NotBlank(message = "Campo obrigatório")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+    @NotBlank(message = "Campo obrigatório")
+    private String address;
     
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf,String email, String senha, String endereco) {
-        this.nome = nome;
-        this.cpf = cpf;
+    //Caso possuir deficiencia
+    public Cliente(String name, String email, String cpf, String password, boolean isPCD, String typePCD, String address) {
+        this.name = name;
         this.email = email;
-        this.senha = senha;
-        this.endereco = endereco;
+        this.cpf = cpf;
+        this.isPCD = isPCD;
+        this.typePCD = typePCD;
+        this.password = password;
+        this.address = address;
+    }
+
+    //Caso nao possuir deficiencia
+    public Cliente(String name, String email, String cpf, String password, boolean isPCD, String address) {
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.isPCD = isPCD;
+        this.password = password;
+        this.address = address;
     }
 
     public Long getId() {
@@ -48,12 +67,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCpf() {
@@ -72,27 +91,43 @@ public class Cliente {
         this.email = email;
     }
 
+    public boolean getIsPCD() {
+        return isPCD;
+    }
+
+    public void setIsPCD(boolean isPCD) {
+        this.isPCD = isPCD;
+    }
+
+    public String getTypePCD() {
+        return typePCD;
+    }
+
+    public void setTypePCD(String typePCD) {
+        this.typePCD = typePCD;
+    }
+
     @JsonProperty(access = Access.WRITE_ONLY)
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
         return "Cliente [cpf=" + cpf + ", email=" + email + ", endereco="
-                + endereco + ", id=" + id + ", nome=" + nome + ", senha=" + senha + "]";
+                + address + ", id=" + id + ", nome=" + name + ", senha=" + password + ", pcd=" + isPCD + ", tipoPCD=" + typePCD + "]";
     }
     
 }

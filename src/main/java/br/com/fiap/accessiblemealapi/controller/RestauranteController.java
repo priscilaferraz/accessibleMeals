@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.accessiblemealapi.DTO.RestauranteDTO;
 import br.com.fiap.accessiblemealapi.model.Restaurante;
 import br.com.fiap.accessiblemealapi.service.RestauranteService;
 
@@ -38,8 +39,8 @@ public class RestauranteController {
     }
 
     @PostMapping
-    public ResponseEntity<Restaurante> create(@Valid @RequestBody Restaurante restaurante) {
-        service.save(restaurante);
+    public ResponseEntity<Restaurante> create(@Valid @RequestBody RestauranteDTO dto) {
+        Restaurante restaurante = service.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurante);
     }
 
@@ -61,16 +62,8 @@ public class RestauranteController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Restaurante> update(@PathVariable Long id, @RequestBody Restaurante newRestaurante){
-        var optional = service.getById(id);
-
-        if(optional.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        
-        var restaurante = optional.get();
-        BeanUtils.copyProperties(newRestaurante, restaurante);
-        restaurante.setId(id);
-        service.save(restaurante);
-        return ResponseEntity.ok(restaurante);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody RestauranteDTO newDto){
+        service.updateById(id, newDto);
+        return ResponseEntity.ok().build();
     }    
 }
