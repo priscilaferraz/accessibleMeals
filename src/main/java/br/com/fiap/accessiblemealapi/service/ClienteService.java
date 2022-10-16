@@ -39,6 +39,7 @@ public class ClienteService {
 
         response.put("id", cliente.getId());
         response.put("name", cliente.getName());
+        response.put("email", cliente.getEmail());
         response.put("isPCD", cliente.getIsPCD());
         response.put("typePCD", cliente.getTypePCD());
 

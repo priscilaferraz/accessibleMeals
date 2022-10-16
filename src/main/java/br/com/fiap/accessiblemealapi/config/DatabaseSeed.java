@@ -28,9 +28,9 @@ public class DatabaseSeed implements CommandLineRunner {
                 "Alfonso Matsuoka",
                 "rm87336@fiap.com.br",
                 "41540600823",
-                "123",
+                "Rua Ararapira, 146",
                 false,
-                "Rua Ararapira, 146"
+                "123"
             )
         ); 
         
@@ -39,9 +39,9 @@ public class DatabaseSeed implements CommandLineRunner {
                 "Amanda Silva",
                 "admin@fiap.com.br",
                 "456.098.654-80",
-                "123",
+                "Av Cantareira, 1010",
                 false,
-                "Av Cantareira, 1010"
+                "123"
             )
         ); 
 
@@ -50,10 +50,10 @@ public class DatabaseSeed implements CommandLineRunner {
                 "Marcos Silva",
                 "marcos@fiap.com.br",
                 "12345678909",
-                "123",
+                "Av Jabaquara, 1900",
                 true,
                 "auditiva",
-                "Av Jabaquara, 1900"
+                "123"
             )
         ); 
 

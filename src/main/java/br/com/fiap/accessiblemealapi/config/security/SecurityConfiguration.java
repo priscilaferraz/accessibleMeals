@@ -36,6 +36,7 @@ public class SecurityConfiguration {
                 .antMatchers(HttpMethod.PUT, "/api/restaurante/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/api/restaurante/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/cliente/login/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/cliente/login/**").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().cors()

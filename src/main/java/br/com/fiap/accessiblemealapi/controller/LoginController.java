@@ -23,6 +23,6 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<Map<String, Object>> login(@RequestBody Login login) {
-        return ResponseEntity.ok(service.login(login.getEmail(), login.getSenha()));
+        return ResponseEntity.ok(service.login(login.getEmail(), login.getPassword()));
     }
 }
