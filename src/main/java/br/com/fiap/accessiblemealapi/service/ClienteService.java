@@ -1,6 +1,8 @@
 package br.com.fiap.accessiblemealapi.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,21 @@ public class ClienteService {
         return repository.findById(id);
     }
     
-    public Optional<Cliente> findByEmailAndSenha(String email, String senha) {
-        return repository.findByEmailAndSenha(email, senha);
+    public Optional<Cliente> findByEmailAndPassword(String email, String password) {
+        return repository.findByEmailAndPassword(email, password);
     }
+
+    public Map<String, Object> login(String email, String password) {
+        Cliente cliente = repository.findByEmailAndPassword(email, password).orElseThrow(() -> new RuntimeException() );
+        Map<String, Object> response = new HashMap<>();
+
+        response.put("id", cliente.getId());
+        response.put("name", cliente.getName());
+        response.put("email", cliente.getEmail());
+        response.put("isPCD", cliente.getIsPCD());
+        response.put("typePCD", cliente.getTypePCD());
+
+        return response;
+    }
+
 }

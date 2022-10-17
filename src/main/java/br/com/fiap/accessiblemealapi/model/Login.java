@@ -11,15 +11,15 @@ public class Login {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private String senha;
+    private String password;
 
 
     public Login() {
     }
 
-    public Login(String email, String senha) {
+    public Login(String email, String password) {
         this.email = email;
-        this.senha = senha;
+        this.password = password;
     }
 
     public Long getId() {
@@ -34,16 +34,16 @@ public class Login {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "LoginCliente [id=" + id + ", email=" + email + ", senha=" + senha + "]";
+        return "LoginCliente [id=" + id + ", email=" + email + ", password=" + password + "]";
     }
 
 }

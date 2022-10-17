@@ -9,6 +9,6 @@ import br.com.fiap.accessiblemealapi.model.Restaurante;
 
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long> {
 
-    @Query("select u from Restaurante u where u.acessibilidade like %?1%")
-    List<Restaurante> findByAcessibilidade(String acessibilidade);
+    @Query("select u from Restaurante u where u.typePCD like %?1%")
+    List<Restaurante> findByTypePCD(String typePCD);
 }

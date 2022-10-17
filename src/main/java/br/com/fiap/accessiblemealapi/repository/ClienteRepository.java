@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.fiap.accessiblemealapi.model.Cliente;
 
+
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     Optional<Cliente> findByEmail(String username);
 
-    Optional<Cliente> findByEmailAndSenha(String email, String senha);
+    Optional<Cliente> findByEmailAndPassword(String email, String password);
 }
