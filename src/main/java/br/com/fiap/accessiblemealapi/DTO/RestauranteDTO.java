@@ -15,20 +15,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class RestauranteDTO {
-    /*name: string;
-    email: string;
-    typePCD: ['visual', 'motora', 'mental', 'auditiva'];
-    menu: base64;
-    adress: string;
-    profilePicture: base64;*/
 
     private Long id;
     private String name;
     private String email;
+    private String cnpj;
+    private String address;
     private String typePCD;
     private String menu;
-    private String address;
     private String profilePicture;
+    private double classification;
+    private Long clienteId;
 
     public static Restaurante toModel(RestauranteDTO dto) {
         byte[] decodedMenu = Base64.decodeBase64(dto.getMenu());
@@ -38,10 +35,13 @@ public class RestauranteDTO {
         .id(dto.getId())
         .name(dto.getName())
         .email(dto.getEmail())
+        .cnpj(dto.getCnpj())
+        .address(dto.getAddress())
         .typePCD(dto.getTypePCD())
         .menu(decodedMenu)
-        .address(dto.getAddress())
         .profilePicture(decodedProfilePicture)
+        .classification(dto.getClassification())
+        .clienteId(dto.getClienteId())
         .build();
     }
 
@@ -53,10 +53,13 @@ public class RestauranteDTO {
         .id(restaurante.getId())
         .name(restaurante.getName())
         .email(restaurante.getEmail())
+        .cnpj(restaurante.getCnpj())
+        .address(restaurante.getAddress())
         .typePCD(restaurante.getTypePCD())
         .menu(encodedMenu)
-        .address(restaurante.getAddress())
         .profilePicture(encodedProfilePicture)
+        .classification(restaurante.getClassification())
+        .clienteId(restaurante.getClienteId())
         .build();
     }
 }

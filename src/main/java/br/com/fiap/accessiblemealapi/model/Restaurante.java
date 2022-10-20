@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Range;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -41,10 +43,14 @@ public class Restaurante {
     @Lob
     private byte[] profilePicture;
 
-    private Integer classification;
+    @Range(min = (long) 0.0, max = (long) 5.0)
+    private double classification;
+
+    @Range(min = (long) 1.0)
+    private Long clienteId;
 
     public Restaurante(String name, String email, String cnpj, String address,
-            String typePCD, byte[] menu, byte[] profilePicture, Integer classification) {
+            String typePCD, byte[] menu, byte[] profilePicture, double classification, Long clienteId) {
         this.name = name;
         this.email = email;
         this.cnpj = cnpj;
@@ -53,15 +59,18 @@ public class Restaurante {
         this.menu = menu;
         this.profilePicture = profilePicture;
         this.classification = classification;
+        this.clienteId = clienteId;
     }
 
     public Restaurante(String name, String email, String cnpj, String address,
-            String typePCD) {
+            String typePCD, double classification, Long clienteId) {
         this.name = name;
         this.email = email;
         this.cnpj = cnpj;
         this.address = address;
         this.typePCD = typePCD;
+        this.classification = classification;
+        this.clienteId = clienteId;
     }
 
     public Long getId() {
@@ -128,12 +137,20 @@ public class Restaurante {
         this.profilePicture = profilePicture;
     }
 
-    public Integer getClassification() {
+    public double getClassification() {
         return classification;
     }
 
-    public void setClassification(Integer classification) {
+    public void setClassification(double classification) {
         this.classification = classification;
+    }
+
+    public Long getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Long clienteId) {
+        this.clienteId = clienteId;
     }
 
     @Override

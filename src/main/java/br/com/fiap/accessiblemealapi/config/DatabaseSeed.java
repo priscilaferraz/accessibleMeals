@@ -52,7 +52,7 @@ public class DatabaseSeed implements CommandLineRunner {
                 "12345678909",
                 "Av Jabaquara, 1900",
                 true,
-                "auditiva",
+                "[\"auditiva\"]",
                 "123"
             )
         ); 
@@ -63,28 +63,36 @@ public class DatabaseSeed implements CommandLineRunner {
                 "meals@gmail.com",
                 "17.987.765/0001-32",
                 "Rua Horace Clark, 45",
-                "Deficiência visual"
+                "Deficiência visual",
+                4.5,
+                1L
             ),
             new Restaurante(
                 "Cantareira Ltda",
                 "cantareira@gmail.com",
                 "10.876.456/0002-23",
                 "Rua Orlando de Morais, 1010",
-                "Deficiência mental"
+                "Deficiência mental",
+                3.4,
+                1L
             ),
             new Restaurante(
                 "Food True",
                 "food@gmail.com",
                 "54.098.654/0001-67",
                 "Av Nazaréh, 2456",
-                "Deficiência motora"
+                "Deficiência motora",
+                5.0,
+                2L
             ),
             new Restaurante(
                 "Saborosos Pratos Ltda",
                 "saborosos@gmail.com",
                 "87.543.765/0001-43",
                 "Av Santos Silva, 81",
-                "Deficiência auditiva"
+                "Deficiência auditiva",
+                3.2,
+                3L
             )
         )); 
     }
