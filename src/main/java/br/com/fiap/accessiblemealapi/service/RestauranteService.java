@@ -34,6 +34,10 @@ public class RestauranteService {
         return repository.findByTypePCD(typePCD);
     }
 
+    public List<Restaurante> findByClienteId(Long clienteId) {
+        return repository.findByClienteId(clienteId);
+    }
+
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

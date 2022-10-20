@@ -50,6 +50,11 @@ public class RestauranteController {
         return ResponseEntity.of(service.getById(id));
     }
 
+    @GetMapping(value="/findbycliente/{clienteId}")
+    public List<Restaurante> findByClienteId(@PathVariable Long clienteId){
+        return service.findByClienteId(clienteId);
+    }
+
     @DeleteMapping("{id}")
     @CacheEvict(value = "restaurante", allEntries = true)
     public ResponseEntity<Object> destroy(@PathVariable Long id){
@@ -66,5 +71,5 @@ public class RestauranteController {
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody RestauranteDTO newDto){
         service.updateById(id, newDto);
         return ResponseEntity.ok().build();
-    }    
+    }
 }
